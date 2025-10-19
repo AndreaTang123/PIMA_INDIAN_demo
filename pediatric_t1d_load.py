@@ -21,13 +21,25 @@ print("✅ Dataset file found at:", file_path)
 df = pd.read_csv(file_path)
 
 # 4️⃣ 查看基本信息
-print("\n📊 Shape of dataset:", df.shape)
-print("\n📋 Columns:", df.columns.tolist())
-print("\n🔍 First 5 records:")
-print(df.head())
+#print("\n📊 Shape of dataset:", df.shape)
+#print("\n📋 Columns:", df.columns.tolist())
+#print("\n🔍 First 5 records:")
+#print(df.head())
 # Step 2️⃣: 检查数据类型与缺失值
-print("\nData types:")
-print(df.dtypes)
+#print("\nData types:")
+#print(df.dtypes)
 
-print("\nMissing values per column:")
-print(df.isnull().sum().sort_values(ascending=False))
+#print("\nMissing values per column:")
+#print(df.isnull().sum().sort_values(ascending=False))
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+sns.countplot(x='JK', hue='Diagnosa', data=df)
+plt.title("Sex vs Diabetes Diagnosis")
+plt.savefig("sex_vs_diagnosis.png", dpi=300, bbox_inches='tight')
+plt.show()
+
+sns.boxplot(x='Diagnosa', y='HbA1c', data=df)
+plt.title("HbA1c levels by Diagnosis")
+plt.savefig("hba1c_vs_diagnosis.png", dpi=300, bbox_inches='tight')
+plt.show()
